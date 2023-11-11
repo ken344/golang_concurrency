@@ -76,6 +76,7 @@ func fanOut(ctx context.Context, in <-chan int, id int) <-chan string {
 	return out
 }
 
+// fanOutで複数のチャネルに分割した処理を、fanInで一つのチャネルにまとめる.
 func fanIn(ctx context.Context, chs ...<-chan string) <-chan string {
 	var wg sync.WaitGroup
 	out := make(chan string)
